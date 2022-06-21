@@ -7,7 +7,8 @@ public class OutlineFeature : ScriptableRendererFeature
     public enum OutlineProfileId
     {
         Mask,
-        FullScreen
+        FullScreen,
+        Outline
     }
 
     [Tooltip("遮挡显示")] public bool show;
@@ -20,28 +21,19 @@ public class OutlineFeature : ScriptableRendererFeature
 
     [SerializeField] private LayerMask layerMask;
 
-    RenderMaskPass renderMaskPass;
-    FullScreenPass fullScreenPass;
+    OutlineFeaturePass _outlineFeaturePass;
 
-    private Material m_MaskMaterial;
-    private Material m_FullMaterial;
+    private Material m_Material;
 
-    private const string k_MaskShaderName = "MK/OutlineMask";
-    private const string k_FullShaderName = "MK/OutlineFullScreen";
+    private const string k_ShaderName = "MK/Outline";
 
-    [SerializeField, HideInInspector] private Shader m_MaskShader;
-    [SerializeField, HideInInspector] private Shader m_fullShader;
+    [SerializeField, HideInInspector] private Shader m_Shader;
 
     /// <inheritdoc/>
     public override void Create()
     {
 
-        renderMaskPass = new RenderMaskPass(RenderQueueRange.opaque, layerMask)
-        {
-            renderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing
-        };
-
-        fullScreenPass = new FullScreenPass(this)
+        _outlineFeaturePass = new OutlineFeaturePass(RenderQueueRange.opaque, layerMask,this)
         {
             renderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing
         };
@@ -51,7 +43,7 @@ public class OutlineFeature : ScriptableRendererFeature
     // This method is called when setting up the renderer once per-camera.
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
-        if (!GetMaterial() || !GetFullMaterial())
+        if (!GetMaterial())
         {
             Debug.LogErrorFormat(
                 "{0}.AddRenderPasses(): Missing material. {1} render pass will not be added. Check for missing reference in the renderer resources.",
@@ -59,63 +51,41 @@ public class OutlineFeature : ScriptableRendererFeature
             return;
         }
 
-        bool shouldAdd = renderMaskPass.Setup(renderer, m_MaskMaterial,show) && fullScreenPass.Setup(renderer, m_FullMaterial);
+        bool shouldAdd = _outlineFeaturePass.Setup(renderer, m_Material);
         if (shouldAdd)
         {
-            renderer.EnqueuePass(renderMaskPass);
-            renderer.EnqueuePass(fullScreenPass);
+            renderer.EnqueuePass(_outlineFeaturePass);
+            //renderer.EnqueuePass(fullScreenPass);
         }
     }
 
     private bool GetMaterial()
     {
-        if (m_MaskMaterial != null)
+        if (m_Material != null)
         {
             return true;
         }
 
-        if (m_MaskShader == null)
+        if (m_Shader == null)
         {
-            m_MaskShader = Shader.Find(k_MaskShaderName);
-            if (m_MaskShader == null)
+            m_Shader = Shader.Find(k_ShaderName);
+            if (m_Shader == null)
             {
                 return false;
             }
         }
 
-        m_MaskMaterial = CoreUtils.CreateEngineMaterial(m_MaskShader);
+        m_Material = CoreUtils.CreateEngineMaterial(m_Shader);
 
-        return m_MaskMaterial != null;
-    }
-    private bool GetFullMaterial()
-    {
-        if (m_FullMaterial != null)
-        {
-            return true;
-        }
-
-        if (m_fullShader == null)
-        {
-            m_fullShader = Shader.Find(k_FullShaderName);
-            if (m_fullShader == null)
-            {
-                return false;
-            }
-        }
-        m_FullMaterial = CoreUtils.CreateEngineMaterial(m_fullShader);
-        return m_FullMaterial != null;
+        return m_Material != null;
     }
 
 
     protected override void Dispose(bool disposing)
     {
-        renderMaskPass?.Dispose();
-        renderMaskPass = null;
-        
-        fullScreenPass?.Dispose();
-        fullScreenPass = null;
-        
-        CoreUtils.Destroy(m_MaskMaterial);
-        CoreUtils.Destroy(m_FullMaterial);
+        _outlineFeaturePass?.Dispose();
+        _outlineFeaturePass = null;
+
+        CoreUtils.Destroy(m_Material);
     }
 }
