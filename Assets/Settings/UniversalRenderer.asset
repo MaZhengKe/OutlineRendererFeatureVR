@@ -84,9 +84,10 @@ MonoBehaviour:
   m_Active: 1
   fullShader: {fileID: 4800000, guid: 4ac4ec1816a9474cb9ec17f0bcc50782, type: 3}
   scale: 1
-  width: 4.59
+  width: 0.79
   samplePrecision: 3
   color: {r: 4, g: 0, b: 0, a: 1}
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+  m_Shader: {fileID: 4800000, guid: 774e6caed6c88af4780de9ae14901135, type: 3}
