@@ -7,22 +7,14 @@ using UnityEngine.Rendering.Universal;
 class RenderMaskPass : ScriptableRenderPass
 {
     readonly List<ShaderTagId> _shaderTagIds = new();
-
-    readonly RenderTargetIdentifier _maskTargetIdentifier;
-
     private FilteringSettings _filteringSettings;
 
-    private RenderTextureDescriptor blitTargetDescriptor;
-
-    string m_ProfilerTag = "Mask pass";
-
+    readonly RenderTargetIdentifier _maskTargetIdentifier;
+    private RenderTextureDescriptor descriptor { get; set; }
     private RTHandle m_MaskTexture;
-    
     private static readonly int s_MaskTextureID = Shader.PropertyToID("_MaskTex");
 
     private ProfilingSampler m_ProfilingSampler = ProfilingSampler.Get(OutlineFeature.OutlineProfileId.Mask);
-
-    private RenderTextureDescriptor descriptor { get; set; }
 
     private ScriptableRenderer m_Renderer = null;
     private Material m_Material;
@@ -44,8 +36,6 @@ class RenderMaskPass : ScriptableRenderPass
     {
         m_Material = material;
         m_Renderer = renderer;
-
-        //renderTargetHandle = outRenderTargetHandle;
 
         baseDescriptor.colorFormat = RenderTextureFormat.R8;
         //baseDescriptor.depthBufferBits = 0;
@@ -99,15 +89,12 @@ class RenderMaskPass : ScriptableRenderPass
         CommandBufferPool.Release(cmd);
     }
 
-    // Cleanup any allocated resources that were created during the execution of this render pass.
     public override void OnCameraCleanup(CommandBuffer cmd)
     {
-        
         if (cmd == null)
         {
-            throw new ArgumentNullException("cmd");
+            throw new ArgumentNullException(nameof(cmd));
         }
-        
         cmd.ReleaseTemporaryRT(s_MaskTextureID);
     }
 

@@ -27,6 +27,7 @@ public class OutlineFeature : ScriptableRendererFeature
 
 
     private Material m_MaskMaterial;
+    private Material m_FullMaterial;
 
 
     private const string k_ShaderName = "MK/OutlineMask";
@@ -35,14 +36,13 @@ public class OutlineFeature : ScriptableRendererFeature
     /// <inheritdoc/>
     public override void Create()
     {
-        var fullMat = CoreUtils.CreateEngineMaterial(fullShader);
 
         renderMaskPass = new RenderMaskPass(RenderQueueRange.opaque, layerMask)
         {
             renderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing
         };
 
-        fullScreenPass = new FullScreenPass(this, fullMat)
+        fullScreenPass = new FullScreenPass(this)
         {
             renderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing
         };
@@ -66,6 +66,9 @@ public class OutlineFeature : ScriptableRendererFeature
         {
             renderer.EnqueuePass(renderMaskPass);
         }
+        
+        m_FullMaterial = CoreUtils.CreateEngineMaterial(fullShader);
+        fullScreenPass.Setup(renderer, m_FullMaterial);
 
         renderer.EnqueuePass(fullScreenPass);
     }
@@ -98,6 +101,11 @@ public class OutlineFeature : ScriptableRendererFeature
     {
         renderMaskPass?.Dispose();
         renderMaskPass = null;
+        
+        fullScreenPass?.Dispose();
+        fullScreenPass = null;
+        
         CoreUtils.Destroy(m_MaskMaterial);
+        CoreUtils.Destroy(m_FullMaterial);
     }
 }
