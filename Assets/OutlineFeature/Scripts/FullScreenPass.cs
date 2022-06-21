@@ -45,7 +45,6 @@ class FullScreenPass : ScriptableRenderPass
 
         if (!renderingData.cameraData.postProcessEnabled) return;
 
-
         if (outlineFeature == null) return;
 
         var cmd = CommandBufferPool.Get();
@@ -55,8 +54,12 @@ class FullScreenPass : ScriptableRenderPass
             m_Material.SetFloat(WidthId, outlineFeature.width);
             m_Material.SetFloat(SamplePrecisionId, outlineFeature.samplePrecision);
             m_Material.SetColor(ColorId, outlineFeature.color);
+            
+            //CoreUtils.DrawFullScreen(cmd,m_Material);
 
-            cmd.DrawMesh(RenderingUtils.fullscreenMesh, Matrix4x4.identity, m_Material);
+            //cmd.DrawProcedural(Matrix4x4.identity, m_Material, 0, MeshTopology.Triangles, 3, 1);
+            
+            cmd.DrawMesh(RenderingUtils.fullscreenMesh, Matrix4x4.identity, m_Material,0,0);
         }
 
         context.ExecuteCommandBuffer(cmd);

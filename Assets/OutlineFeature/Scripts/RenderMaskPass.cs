@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-class RenderMaskPass : ScriptableRenderPass
+internal class RenderMaskPass : ScriptableRenderPass
 {
     readonly List<ShaderTagId> _shaderTagIds = new();
     private FilteringSettings _filteringSettings;
@@ -60,7 +60,7 @@ class RenderMaskPass : ScriptableRenderPass
         if (m_Material == null)
         {
             Debug.LogErrorFormat(
-                "{0}.Execute(): Missing material. ScreenSpaceAmbientOcclusion pass will not execute. Check for missing reference in the renderer resources.",
+                "{0}.Execute(): Missing material. RenderMaskPass pass will not execute. Check for missing reference in the renderer resources.",
                 GetType().Name);
             return;
         }
