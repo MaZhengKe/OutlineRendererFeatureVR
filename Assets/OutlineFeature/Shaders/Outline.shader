@@ -1,4 +1,4 @@
-Shader "MK/Outline"
+Shader "KuanMi/Outline"
 {
     
     Properties
@@ -153,10 +153,6 @@ Shader "MK/Outline"
             half4 frag(Varyings input):SV_Target
             {
                 UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
-
-                // float4 cc = SAMPLE_TEXTURE2D_X(_SSRTexture, sampler_SSRTexture, input.uv);
-                // return cc;
-                
                 
                 float4 c = sampleMask(input.uv);
 
