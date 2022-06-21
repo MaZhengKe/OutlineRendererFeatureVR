@@ -10,7 +10,7 @@ internal class RenderMaskPass : ScriptableRenderPass
     private FilteringSettings _filteringSettings;
 
     readonly RenderTargetIdentifier _maskTargetIdentifier;
-    private RenderTextureDescriptor descriptor { get; set; }
+    private RenderTextureDescriptor m_MaskDescriptor;
     private RTHandle m_MaskTexture;
     private static readonly int s_MaskTextureID = Shader.PropertyToID("_MaskTex");
 
@@ -18,6 +18,7 @@ internal class RenderMaskPass : ScriptableRenderPass
 
     private ScriptableRenderer m_Renderer = null;
     private Material m_Material;
+    private bool m_Show;
 
     public RenderMaskPass(RenderQueueRange renderQueueRange, LayerMask layerMask)
     {
@@ -31,28 +32,33 @@ internal class RenderMaskPass : ScriptableRenderPass
         m_MaskTexture = RTHandles.Alloc(new RenderTargetIdentifier(s_MaskTextureID), "_MaskTex");
     }
 
-    public bool Setup(RenderTextureDescriptor baseDescriptor, float scale, ScriptableRenderer renderer,
-        Material material)
+    public bool Setup(ScriptableRenderer renderer, Material material,bool show)
     {
         m_Material = material;
         m_Renderer = renderer;
-
-        baseDescriptor.colorFormat = RenderTextureFormat.R8;
-        //baseDescriptor.depthBufferBits = 0;
-        baseDescriptor.height = (int)(baseDescriptor.height * scale);
-        baseDescriptor.width = (int)(baseDescriptor.width * scale);
-        baseDescriptor.msaaSamples = 1;
-        descriptor = baseDescriptor;
+        m_Show = show;
 
         return true;
     }
 
-    public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
+    public override void OnCameraSetup(CommandBuffer cmd, ref RenderingData renderingData)
     {
-        cmd.GetTemporaryRT(s_MaskTextureID, descriptor, FilterMode.Bilinear);
+        
+        var cameraTargetDescriptor = renderingData.cameraData.cameraTargetDescriptor;
+        
+        RenderTextureDescriptor descriptor = cameraTargetDescriptor;
+        // descriptor.msaaSamples = 1;
+        // descriptor.depthBufferBits = 0;
 
-        ConfigureTarget(m_MaskTexture);
-        ConfigureClear(ClearFlag.All, Color.clear);
+        m_MaskDescriptor = descriptor;
+        m_MaskDescriptor.colorFormat = RenderTextureFormat.R8;
+        m_MaskDescriptor.depthBufferBits = 0;
+        //m_MaskDescriptor.msaaSamples = 1;
+
+        cmd.GetTemporaryRT(s_MaskTextureID, m_MaskDescriptor, FilterMode.Bilinear);
+        
+        ConfigureTarget(m_MaskTexture,m_Renderer.cameraDepthTargetHandle);
+        ConfigureClear(ClearFlag.Color, Color.clear);
     }
 
     public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
@@ -63,6 +69,15 @@ internal class RenderMaskPass : ScriptableRenderPass
                 "{0}.Execute(): Missing material. RenderMaskPass pass will not execute. Check for missing reference in the renderer resources.",
                 GetType().Name);
             return;
+        }
+
+        if (m_Show)
+        {
+            m_Material.SetFloat("_ZTest",8);
+        }
+        else
+        {
+            m_Material.SetFloat("_ZTest",4);
         }
 
         var cmd = CommandBufferPool.Get();

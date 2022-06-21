@@ -82,12 +82,12 @@ MonoBehaviour:
   m_Name: OutlineFeature
   m_EditorClassIdentifier: 
   m_Active: 1
-  fullShader: {fileID: 4800000, guid: 4ac4ec1816a9474cb9ec17f0bcc50782, type: 3}
-  scale: 1
-  width: 0.79
+  show: 0
+  width: 2.77
   samplePrecision: 3
-  color: {r: 4, g: 0, b: 0, a: 1}
+  color: {r: 3.9999995, g: 0, b: 0, a: 1}
   layerMask:
     serializedVersion: 2
     m_Bits: 64
-  m_Shader: {fileID: 4800000, guid: 774e6caed6c88af4780de9ae14901135, type: 3}
+  m_MaskShader: {fileID: 4800000, guid: 774e6caed6c88af4780de9ae14901135, type: 3}
+  m_fullShader: {fileID: 4800000, guid: 4ac4ec1816a9474cb9ec17f0bcc50782, type: 3}

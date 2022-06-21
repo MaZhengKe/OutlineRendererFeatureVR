@@ -1,5 +1,10 @@
 Shader "MK/OutlineMask"
 {
+    
+    Properties
+    {
+         _ZTest("ZTest", Float) = 3.0
+    }
     SubShader
     {
         Tags
@@ -11,8 +16,8 @@ Shader "MK/OutlineMask"
 
         Pass
         {
-            Zwrite Off
-            Ztest Off
+            ZWrite off
+            ZTest [_ZTest]
             HLSLPROGRAM
             #pragma  vertex vert
             #pragma  fragment frag
@@ -32,7 +37,6 @@ Shader "MK/OutlineMask"
                 float4 positionHCS : SV_POSITION;
                 UNITY_VERTEX_OUTPUT_STEREO
             };
-            
 
             Varyings vert(Attributes input)
             {
