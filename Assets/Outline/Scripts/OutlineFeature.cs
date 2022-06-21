@@ -56,7 +56,6 @@ namespace KuanMi
             if (shouldAdd)
             {
                 renderer.EnqueuePass(_outlinePass);
-                //renderer.EnqueuePass(fullScreenPass);
             }
         }
 

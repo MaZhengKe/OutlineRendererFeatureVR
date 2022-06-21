@@ -140,7 +140,7 @@ public class CustomRenderPassFeature : ScriptableRendererFeature
         m_ScriptablePass = new CustomRenderPass();
 
         // Configures where the render pass should be injected.
-        m_ScriptablePass.renderPassEvent = RenderPassEvent.AfterRenderingOpaques;
+        m_ScriptablePass.renderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing;
     }
 
     // Here you can inject one or multiple render passes in the renderer.
