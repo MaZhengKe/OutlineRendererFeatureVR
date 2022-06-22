@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-891583715862292121
+--- !u!114 &-3113706013271409126
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,11 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41d82e9effbdf07489832b582ea37240, type: 3}
-  m_Name: CustomRenderPassFeature
+  m_Script: {fileID: 11500000, guid: ee4421f7510668b4baa9148848c92bb5, type: 3}
+  m_Name: OutlineFeature
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
+  show: 0
+  width: 2.5
+  samplePrecision: 3
+  color: {r: 16, g: 0, b: 0.3137255, a: 1}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 2147483647
   m_Shader: {fileID: 4800000, guid: 774e6caed6c88af4780de9ae14901135, type: 3}
+  renderLayer: 2097152
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30,8 +38,8 @@ MonoBehaviour:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
   m_RendererFeatures:
   - {fileID: 5107891478644713921}
-  - {fileID: -891583715862292121}
-  m_RendererFeatureMap: c1e9dcaf3ce0e246675981905575a0f3
+  - {fileID: -3113706013271409126}
+  m_RendererFeatureMap: c1e9dcaf3ce0e2461abef5c7e0e4c9d4
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -82,11 +90,12 @@ MonoBehaviour:
   m_Name: OutlineFeature
   m_EditorClassIdentifier: 
   m_Active: 1
-  show: 0
-  width: 2
+  show: 1
+  width: 5
   samplePrecision: 3
-  color: {r: 3.9999995, g: 0, b: 0, a: 1}
+  color: {r: 0, g: 3.9999995, b: 3.1092117, a: 1}
   layerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 2147483647
   m_Shader: {fileID: 4800000, guid: 774e6caed6c88af4780de9ae14901135, type: 3}
+  renderLayer: 1048576

@@ -28,10 +28,10 @@ namespace KuanMi
         private readonly OutlineFeature outlineFeature;
         private static readonly int ZTest = Shader.PropertyToID("_ZTest");
 
-        public OutlinePass(RenderQueueRange renderQueueRange, LayerMask layerMask, OutlineFeature outlineFeature)
+        public OutlinePass(RenderQueueRange renderQueueRange, LayerMask layerMask, uint renderingLayerMask, OutlineFeature outlineFeature)
         {
             this.outlineFeature = outlineFeature;
-            _filteringSettings = new FilteringSettings(renderQueueRange, layerMask);
+            _filteringSettings = new FilteringSettings(renderQueueRange, layerMask,renderingLayerMask);
 
             _shaderTagIds.Add(new ShaderTagId("SRPDefaultUnlit"));
             _shaderTagIds.Add(new ShaderTagId("UniversalForward"));
@@ -61,8 +61,8 @@ namespace KuanMi
 
             cmd.GetTemporaryRT(s_MaskTextureID, m_MaskDescriptor, FilterMode.Bilinear);
 
-            ConfigureTarget(m_MaskTexture, m_Renderer.cameraDepthTargetHandle);
-            ConfigureClear(ClearFlag.Color, Color.clear);
+            // ConfigureTarget(m_MaskTexture, m_Renderer.cameraDepthTargetHandle);
+            // ConfigureClear(ClearFlag.Color, Color.clear);
         }
 
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
@@ -97,9 +97,16 @@ namespace KuanMi
                     context.StartMultiEye(camera);
 
                 drawSettings.overrideMaterial = m_Material;
+
+                // 切换
+                CoreUtils.SetRenderTarget(cmd, m_MaskTexture, m_Renderer.cameraDepthTargetHandle, ClearFlag.Color, Color.clear);
+                context.ExecuteCommandBuffer(cmd);
+                cmd.Clear();
+
                 // 绘制遮罩
                 context.DrawRenderers(renderingData.cullResults, ref drawSettings, ref _filteringSettings);
-
+                
+                cmd.SetGlobalTexture(s_MaskTextureID, m_MaskTexture.nameID);
                 // 绘制轮廓线
                 CoreUtils.SetRenderTarget(cmd, m_Renderer.cameraColorTargetHandle);
                 cmd.DrawMesh(RenderingUtils.fullscreenMesh, Matrix4x4.identity, m_Material, 0, 1);

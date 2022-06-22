@@ -1,9 +1,9 @@
 Shader "KuanMi/Outline"
 {
-    
+
     Properties
     {
-         _ZTest("ZTest", Float) = 3.0
+        _ZTest("ZTest", Float) = 3.0
     }
     SubShader
     {
@@ -64,8 +64,10 @@ Shader "KuanMi/Outline"
             Ztest Off
             Cull Off
             //Blend SrcAlpha OneMinusSrcAlpha
-            Blend one one
-            
+            Blend SrcAlpha OneMinusSrcAlpha
+            //Blend SrcAlpha zero
+            //Blend  one  one
+
             HLSLPROGRAM
             #pragma  vertex vert
             #pragma  fragment frag
@@ -137,7 +139,7 @@ Shader "KuanMi/Outline"
 
             TEXTURE2D_X(_MaskTex);
             SAMPLER(sampler_MaskTex);
-            
+
             TEXTURE2D_X(_CameraOpaqueTexture);
             SAMPLER(sampler_CameraOpaqueTexture);
 
@@ -153,23 +155,25 @@ Shader "KuanMi/Outline"
             half4 frag(Varyings input):SV_Target
             {
                 UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
-                
-                float4 c = sampleMask(input.uv);
+
+                const half mask = sampleMask(input.uv);
+
+                //return float4(mask,mask,mask,1);
+                //clip(0.5 - mask);
 
                 const int sample_count = min(2 * pow(2, _SamplePrecision), MAX_SAMPLES);
 
                 const float2 uv_offset_per_pixel = 1.0 / _ScreenSize.xy;
 
-                float4 outline = 0;
+                float outlineMask = 0;
                 for (int i = 0; i < sample_count; ++ i)
                 {
-                    outline = max(sampleMask(input.uv + uv_offset_per_pixel * _OutlineWidth * offsets[i]), outline);
+                    outlineMask = max(sampleMask(input.uv + uv_offset_per_pixel * _OutlineWidth * offsets[i]),outlineMask);
                 }
-                
-                outline *= _OutlineColor * (1 - c.a);
-                clip(outline.a);
-                
-                return outline;
+                outlineMask *= 1 - mask;
+                //clip(outlineMask-0.5);
+
+                return _OutlineColor*outlineMask;
             }
             ENDHLSL
         }
