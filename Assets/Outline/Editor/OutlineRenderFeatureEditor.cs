@@ -17,7 +17,7 @@ namespace Outline.Editor
             base.OnInspectorGUI();
             if (GUILayout.Button("清理 render layer mask " + outlineFeature.renderingLayer))
             {
-                OutlineFeature.CleanOutLayer();
+                outlineFeature.CleanOutLayer();
             }
         }
     }

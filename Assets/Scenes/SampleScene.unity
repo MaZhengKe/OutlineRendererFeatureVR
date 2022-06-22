@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &52112388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,23 +406,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 23443988575697304, guid: a87f0180d46fd334b9025d0314a0dc70, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23465259303227802, guid: a87f0180d46fd334b9025d0314a0dc70, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23498071657209960, guid: a87f0180d46fd334b9025d0314a0dc70, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23518036302632516, guid: a87f0180d46fd334b9025d0314a0dc70, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23575124315791700, guid: a87f0180d46fd334b9025d0314a0dc70, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -629,7 +629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1160108913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -987,47 +987,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 23009735414582410, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23051424458900154, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23059122378422524, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23067956399637136, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23123484518446928, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23294592848741636, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23329995186632366, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23331886048273050, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23368822228567966, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23463847993596094, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23480388186737064, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4293918719
       objectReference: {fileID: 0}
     - target: {fileID: 23480388186737064, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_Materials.Array.size
@@ -1039,51 +1039,51 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: e93789f0a5d66df4a81613935579642b, type: 2}
     - target: {fileID: 23514318739494360, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23550572697235950, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23618811303393288, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4294967295
+      value: 4292870143
       objectReference: {fileID: 0}
     - target: {fileID: 23627568587924664, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23659599791270868, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23667842144815306, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23721675590052312, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23816153722797322, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23910508351309776, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23953441425032424, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23970669357719048, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 23987359435537068, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4260364287
+      value: 4258267135
       objectReference: {fileID: 0}
     - target: {fileID: 108453799659117390, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_Lightmapping
@@ -1129,12 +1129,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556901919}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2eaaf90d6c8a4469a9683d83ca25a05e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outline: 1
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0

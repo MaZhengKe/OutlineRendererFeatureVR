@@ -7,10 +7,10 @@ namespace KuanMi
 {
     public class OutlineFeature : ScriptableRendererFeature
     {
-        public static uint renderingLayerMask = 1 << 25;
-
-        public static uint unMask = ~renderingLayerMask;
-
+        public  uint renderingLayerMask ;
+        public  uint unMask ;
+        [SerializeField] [Range(8, 31)] public int renderingLayer = 20;
+        
         public enum OutlineProfileId
         {
             Mask,
@@ -18,8 +18,7 @@ namespace KuanMi
             Outline
         }
 
-        [MenuItem("Create/CleanOutLayer")]
-        public static void CleanOutLayer()
+        public void CleanOutLayer()
         {
             var renderers = FindObjectsOfType<Renderer>();
 
@@ -27,11 +26,11 @@ namespace KuanMi
             {
                 renderer.renderingLayerMask &= unMask;
             }
-            var outlines = FindObjectsOfType<Outline>();
-            foreach (var outline in outlines)
-            {
-                outline.SetLayer();
-            }
+            // var outlines = FindObjectsOfType<Outline>();
+            // foreach (var outline in outlines)
+            // {
+            //     outline.SetLayer();
+            // }
         }
 
 
@@ -44,7 +43,6 @@ namespace KuanMi
         public Color color = new(1, 1, 1);
 
         [SerializeField] private LayerMask layerMask;
-        [SerializeField] [Range(8, 31)] public int renderingLayer = 20;
 
         OutlinePass _outlinePass;
 
