@@ -28,10 +28,10 @@ namespace KuanMi
         private readonly OutlineFeature outlineFeature;
         private static readonly int ZTest = Shader.PropertyToID("_ZTest");
 
-        public OutlinePass(RenderQueueRange renderQueueRange, LayerMask layerMask, OutlineFeature outlineFeature)
+        public OutlinePass(RenderQueueRange renderQueueRange, LayerMask layerMask,uint renderingLayerMask, OutlineFeature outlineFeature)
         {
             this.outlineFeature = outlineFeature;
-            _filteringSettings = new FilteringSettings(renderQueueRange, layerMask);
+            _filteringSettings = new FilteringSettings(renderQueueRange, layerMask,renderingLayerMask);
 
             _shaderTagIds.Add(new ShaderTagId("SRPDefaultUnlit"));
             _shaderTagIds.Add(new ShaderTagId("UniversalForward"));
@@ -99,6 +99,9 @@ namespace KuanMi
                 drawSettings.overrideMaterial = m_Material;
                 // 绘制遮罩
                 context.DrawRenderers(renderingData.cullResults, ref drawSettings, ref _filteringSettings);
+                
+                
+                
 
                 // 绘制轮廓线
                 CoreUtils.SetRenderTarget(cmd, m_Renderer.cameraColorTargetHandle);

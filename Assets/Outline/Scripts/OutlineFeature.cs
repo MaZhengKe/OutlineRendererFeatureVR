@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
@@ -6,12 +7,33 @@ namespace KuanMi
 {
     public class OutlineFeature : ScriptableRendererFeature
     {
+        public static uint renderingLayerMask = 1 << 25;
+
+        public static uint unMask = ~renderingLayerMask;
+
         public enum OutlineProfileId
         {
             Mask,
             FullScreen,
             Outline
         }
+
+        [MenuItem("Create/CleanOutLayer")]
+        public static void CleanOutLayer()
+        {
+            var renderers = FindObjectsOfType<Renderer>();
+
+            foreach (var renderer in renderers)
+            {
+                renderer.renderingLayerMask &= unMask;
+            }
+            var outlines = FindObjectsOfType<Outline>();
+            foreach (var outline in outlines)
+            {
+                outline.SetLayer();
+            }
+        }
+
 
         [Tooltip("遮挡显示")] public bool show;
         [Range(0f, 5f), Tooltip("轮廓宽度")] public float width = 1;
@@ -22,6 +44,7 @@ namespace KuanMi
         public Color color = new(1, 1, 1);
 
         [SerializeField] private LayerMask layerMask;
+        [SerializeField] [Range(8, 31)] public int renderingLayer = 20;
 
         OutlinePass _outlinePass;
 
@@ -34,7 +57,10 @@ namespace KuanMi
         /// <inheritdoc/>
         public override void Create()
         {
-            _outlinePass = new OutlinePass(RenderQueueRange.opaque, layerMask, this)
+            renderingLayerMask = (uint)1 << renderingLayer;
+            unMask = ~renderingLayerMask;
+            
+            _outlinePass = new OutlinePass(RenderQueueRange.opaque, layerMask, (uint)(1 << renderingLayer), this)
             {
                 renderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing
             };
