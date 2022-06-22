@@ -170,8 +170,8 @@ Shader "KuanMi/Outline"
                 {
                     outlineMask = max(sampleMask(input.uv + uv_offset_per_pixel * _OutlineWidth * offsets[i]),outlineMask);
                 }
-                outlineMask *= 1 - mask;
                 //clip(outlineMask-0.5);
+                outlineMask *= 1 - mask;
 
                 return _OutlineColor*outlineMask;
             }

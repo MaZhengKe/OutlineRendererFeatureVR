@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee4421f7510668b4baa9148848c92bb5, type: 3}
   m_Name: OutlineFeature
   m_EditorClassIdentifier: 
-  m_Active: 1
-  show: 0
+  m_Active: 0
+  show: 1
   width: 2.5
-  samplePrecision: 3
-  color: {r: 16, g: 0, b: 0.3137255, a: 1}
+  samplePrecision: 2
+  color: {r: 0, g: 15.999998, b: 11.281698, a: 1}
   layerMask:
     serializedVersion: 2
     m_Bits: 2147483647
@@ -90,10 +90,10 @@ MonoBehaviour:
   m_Name: OutlineFeature
   m_EditorClassIdentifier: 
   m_Active: 1
-  show: 1
-  width: 5
-  samplePrecision: 3
-  color: {r: 0, g: 3.9999995, b: 3.1092117, a: 1}
+  show: 0
+  width: 2.5
+  samplePrecision: 2
+  color: {r: 5.3403134, g: 0.043807257, b: 0, a: 1}
   layerMask:
     serializedVersion: 2
     m_Bits: 2147483647
