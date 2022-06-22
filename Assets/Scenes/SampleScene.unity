@@ -731,7 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eaaf90d6c8a4469a9683d83ca25a05e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  show: 0
+  show: 1
   renderLayer: 2097152
 --- !u!1 &431273125
 GameObject:
@@ -787,7 +787,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 417e639b66cd3a24e9c5312be99ce3bd, type: 2}
+  - {fileID: 2100000, guid: d2bbbd01c5b7a6b4bb5a1316f21fc1ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1560,7 +1560,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 23480388186737064, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4291821565
+      value: 4293918717
       objectReference: {fileID: 0}
     - target: {fileID: 23480388186737064, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_Materials.Array.size
@@ -1580,7 +1580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 23618811303393288, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4291821567
+      value: 4292870143
       objectReference: {fileID: 0}
     - target: {fileID: 23627568587924664, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
@@ -1667,7 +1667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eaaf90d6c8a4469a9683d83ca25a05e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  show: 0
+  show: 1
   renderLayer: 1048576
 --- !u!54 &1556901924
 Rigidbody:
