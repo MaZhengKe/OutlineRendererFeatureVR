@@ -13,9 +13,6 @@ MonoBehaviour:
   m_Name: OutlineFeature
   m_EditorClassIdentifier: 
   m_Active: 1
-  renderingLayerMask: 2097152
-  unMask: 4292870143
-  renderingLayer: 21
   show: 0
   width: 2.5
   samplePrecision: 3
@@ -24,6 +21,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483647
   m_Shader: {fileID: 4800000, guid: 774e6caed6c88af4780de9ae14901135, type: 3}
+  renderLayer: 2097152
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,9 +90,6 @@ MonoBehaviour:
   m_Name: OutlineFeature
   m_EditorClassIdentifier: 
   m_Active: 1
-  renderingLayerMask: 1048576
-  unMask: 4293918719
-  renderingLayer: 20
   show: 1
   width: 5
   samplePrecision: 3
@@ -103,3 +98,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483647
   m_Shader: {fileID: 4800000, guid: 774e6caed6c88af4780de9ae14901135, type: 3}
+  renderLayer: 1048576

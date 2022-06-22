@@ -15,7 +15,7 @@ namespace Outline.Editor
             var outlineFeature = target as OutlineFeature;
             
             base.OnInspectorGUI();
-            if (GUILayout.Button("清理 render layer mask " + outlineFeature.renderingLayer))
+            if (GUILayout.Button("清理 render layer mask"))
             {
                 outlineFeature.CleanOutLayer();
             }

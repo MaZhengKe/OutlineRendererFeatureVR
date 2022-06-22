@@ -432,6 +432,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4527368504392492, guid: a87f0180d46fd334b9025d0314a0dc70, type: 3}
   m_PrefabInstance: {fileID: 296138508}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &361900997 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1973017577027654, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
+  m_PrefabInstance: {fileID: 1556901916}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &361901001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361900997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eaaf90d6c8a4469a9683d83ca25a05e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  show: 0
+  renderLayer: 2097152
 --- !u!1 &497167668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,7 +1046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 23480388186737064, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4293918719
+      value: 4291821567
       objectReference: {fileID: 0}
     - target: {fileID: 23480388186737064, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_Materials.Array.size
@@ -1047,7 +1066,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 23618811303393288, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
-      value: 4292870143
+      value: 4291821567
       objectReference: {fileID: 0}
     - target: {fileID: 23627568587924664, guid: 85dfab9623c67784fa7894de63cd1604, type: 3}
       propertyPath: m_RenderingLayerMask
@@ -1129,11 +1148,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556901919}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2eaaf90d6c8a4469a9683d83ca25a05e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  show: 0
+  renderLayer: 1048576
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0

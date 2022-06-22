@@ -5,34 +5,38 @@ namespace KuanMi
 {
     [RequireComponent(typeof(Renderer))]
     public class Outline : MonoBehaviour
-    { 
-        // public bool outline;
-        //
-        // private Renderer _renderer;
-        //
-        // public  uint renderingLayerMask ;
-        // public  uint unMask ;
-        // [Range(8, 31)] public int renderingLayer = 20;
-        //
-        //
-        // private void Update()
-        // {
-        //     SetLayer();
-        // }
-        //
-        // private void OnValidate()
-        // {
-        //     SetLayer();
-        // }
-        //
-        // public void SetLayer()
-        // {
-        //     if (_renderer == null)
-        //         _renderer = GetComponent<Renderer>();
-        //     if (outline)
-        //         _renderer.renderingLayerMask |= renderingLayerMask;
-        //     else
-        //         _renderer.renderingLayerMask &= unMask;
-        // }
+    {
+        [SerializeField] private bool show;
+
+        private Renderer _renderer;
+
+        public OutlineFeature.RenderLayer renderLayer;
+
+        public void Show()
+        {
+            show = true;
+            SetLayer();
+        }
+
+        public void Hide()
+        {
+            show = false;
+            SetLayer();
+        }
+
+        private void OnValidate()
+        {
+            SetLayer();
+        }
+
+        private void SetLayer()
+        {
+            if (_renderer == null)
+                _renderer = GetComponent<Renderer>();
+            if (show)
+                _renderer.renderingLayerMask |= (uint)renderLayer;
+            else
+                _renderer.renderingLayerMask &= ~(uint)renderLayer;
+        }
     }
 }
